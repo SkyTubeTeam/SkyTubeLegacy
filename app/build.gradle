@@ -76,7 +76,7 @@ android {
     // Generate APK filenames as follows:  <App Name>-<Flavor><Version>
     applicationVariants.all { variant ->
         outputs.all { output ->
-            outputFileName = "${parent.name}-${productFlavors[0].name.capitalize()}-${versionName}.apk"
+            outputFileName = "${parent.name}-Legacy-${productFlavors[0].name.capitalize()}-${versionName}.apk"
         }
     }
     // Ignore missing translations
