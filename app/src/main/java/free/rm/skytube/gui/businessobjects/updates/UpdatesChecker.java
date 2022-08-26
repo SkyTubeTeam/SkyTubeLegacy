@@ -138,7 +138,7 @@ public class UpdatesChecker {
 			JSONObject asset = assets.getJSONObject(i);
 			String name = asset.getString("name");
 			if (name != null) {
-				if (name.toLowerCase().startsWith("skytube-" + BuildConfig.FLAVOR + "-")) {
+				if (name.toLowerCase().startsWith("skytube-legacy-" + BuildConfig.FLAVOR + "-")) {
 					return new URL(asset.getString("browser_download_url"));
 				}
 			}
