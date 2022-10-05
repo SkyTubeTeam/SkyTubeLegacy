@@ -16,7 +16,9 @@
  */
 package free.rm.skytube.businessobjects.YouTube.POJOs;
 
-import com.google.common.base.Charsets;
+import android.annotation.SuppressLint;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * Very simple RC4 obfuscator, to hide the API key from the source code scanners.
@@ -47,8 +49,9 @@ public class ObfuscateKey {
         }
     }
 
+    @SuppressLint("NewApi") // StandardCharsets is desugared for API levels < 19.
     public ObfuscateKey(String key) {
-        this(key.getBytes(Charsets.ISO_8859_1));
+        this(key.getBytes(StandardCharsets.ISO_8859_1));
     }
 
     private byte[] encrypt(final byte[] plaintext) {
@@ -68,11 +71,11 @@ public class ObfuscateKey {
         return ciphertext;
     }
 
+    @SuppressLint("NewApi") // StandardCharsets is desugared for API levels < 19.
     public String decrypt(String input) {
         byte[] raw = encrypt(parseHexBinary(input));
-        return new String(raw, Charsets.ISO_8859_1);
+        return new String(raw, StandardCharsets.ISO_8859_1);
     }
-
 
     private byte[] parseHexBinary(String s) {
         final int len = s.length();
