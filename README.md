@@ -57,7 +57,7 @@ Android 4.0 (Ice Cream Sandwich) or later. For techies, that means an API level 
 | Official YouTube player support* | ✅                   | ❌       |
 | Chromecast Support*              | ✅                   | ❌       |
 | Updates availability             | Immediate            | Normally up to 5 days |
-| Download APK                     | [![Download SkyTube Extra APK](screenshots/download_apk.png)](https://github.com/SkyTubeTeam/SkyTubeLegacy/releases/download/v2.985/SkyTube-Legacy-Extra-2.985.apk) | [![Download SkyTube (Vanilla) APK](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Get_it_on_F-Droid.svg/200px-Get_it_on_F-Droid.svg.png)](https://f-droid.org/repository/browse/?fdid=free.rm.skytube.legacy.oss)
+| Download APK                     | [![Download SkyTube Extra APK](screenshots/download_apk.png)](https://github.com/SkyTubeTeam/SkyTubeLegacy/releases/download/v2.985/SkyTube-Legacy-Extra-2.985.apk) | [![Download SkyTube (Vanilla) APK](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Get_it_on_F-Droid.svg/200px-Get_it_on_F-Droid.svg.png)](https://f-droid.org/packages/free.rm.skytube.legacy.oss/)
 
 _* powered by a closed-source, third-party library._
 
