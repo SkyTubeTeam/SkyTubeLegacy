@@ -46,7 +46,7 @@ jobs:
     - name: Create Github Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "app/build/outputs/apk/oss/release/SkyTube-Oss-*.apk,app/build/outputs/apk/extra/release/SkyTube-Extra-*.apk"
+        artifacts: "app/build/outputs/apk/oss/release/SkyTubeLegacy-*.apk,app/build/outputs/apk/extra/release/SkyTubeLegacy-*.apk"
         draft: "true"
         name: "Version ${{ inputs.version_number }}"
         tag: ${{ inputs.version_number}}
