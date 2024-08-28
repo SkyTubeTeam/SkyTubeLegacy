@@ -30,12 +30,12 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew assembleSnapshot
     - name: Upload Artifacts - OSS version
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: SkyTube-Legacy-Oss.apk
         path: app/build/outputs/apk/oss/snapshot/SkyTubeLegacy-*.apk
     - name: Upload Artifacts - Extra version
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: SkyTube-Legacy-Extra.apk
         path: app/build/outputs/apk/extra/snapshot/SkyTubeLegacy-*.apk
