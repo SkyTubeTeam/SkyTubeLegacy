@@ -110,6 +110,10 @@ This project was possible with the support and contribution of [numerous volunte
 
 Help improve SkyTube by [translating](https://github.com/SkyTubeTeam/SkyTube/wiki/Contribute#translate) or [developing](https://github.com/SkyTubeTeam/SkyTube/wiki/Contribute#developers-guidelines) it.
 
+## Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=SkyTubeTeam/SkyTubeLegacy&type=Date)](https://star-history.dera.page/#SkyTubeTeam/SkyTubeLegacy&Date)
+
 ## License
 
 ![GNU GPLv3](https://www.gnu.org/graphics/gplv3-127x51.png)
