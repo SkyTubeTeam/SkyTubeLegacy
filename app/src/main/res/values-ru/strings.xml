@@ -32,4 +32,5 @@
     <string name="could_not_get_sponsorblock">Не удалось получить информацию от SponsorBlock: %s.</string>
     <string name="cleaner_toast_finish">Видео %1$s убрано из закладок, удалено %2$s MB скаченых файлов</string>
     <string name="cleaner">Очиститель просмотренного видео</string>
+    <string name="incorrect_pin">Неправильный PIN</string>
 </resources>
