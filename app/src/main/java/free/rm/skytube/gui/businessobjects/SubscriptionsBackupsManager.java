@@ -441,7 +441,7 @@ public class SubscriptionsBackupsManager {
         if (hasAccessToExtStorage(IMPORT_OPML_READ_CODE)) {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
-            intent.setType(OPML_MIMETYPE);
+            intent.setType("*/*");
             String[] mimeTypes = {"text/x-opml", "text/xml", "application/xml"};
             intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
             intent.putExtra(Intent.EXTRA_TITLE, activity.getString(R.string.opml_file_picker_title));
@@ -604,10 +604,10 @@ public class SubscriptionsBackupsManager {
         NewPipeService newPipeService = NewPipeService.get();
         SubscriptionsDb subscriptionsDb = SubscriptionsDb.getSubscriptionsDb();
         for (SubscriptionItem item : items){
-            String url = item.getUrl();
+            String url = item.url();
             ContentId contentId = newPipeService.getContentId(url);
             if (contentId != null && contentId.getType() == StreamingService.LinkType.CHANNEL && !subscriptionsDb.isUserSubscribedToChannel(new ChannelId(contentId.getId()))) {
-                result.add(new MultiSelectListPreferenceItem(contentId.getId(), item.getName()));
+                result.add(new MultiSelectListPreferenceItem(contentId.getId(), item.name()));
             }
         }
         return new Result(result, items.isEmpty());

@@ -29,7 +29,10 @@ import org.schabi.newpipe.extractor.stream.VideoStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 import free.rm.skytube.R;
 import free.rm.skytube.BuildConfig;
@@ -54,6 +57,17 @@ public class StreamSelectionPolicy {
 
     public StreamSelectionPolicy withAllowVideoOnly(boolean newValue) {
         return new StreamSelectionPolicy(newValue, maxResolution, minResolution, videoQuality);
+    }
+
+    /**
+     * Returns a new policy that forces selection of the given
+     * {@link VideoResolution} by setting both min and max resolution to {@code res}.
+     *
+     * @param res the exact resolution to enforce during stream selection
+     * @return a new {@code StreamSelectionPolicy} restricted to {@code res}
+     */
+    public StreamSelectionPolicy withResolution(VideoResolution res) {
+        return new StreamSelectionPolicy(allowVideoOnly, res, res, videoQuality);
     }
 
     public StreamSelection select(StreamInfo streamInfo) {
@@ -155,17 +169,53 @@ public class StreamSelectionPolicy {
     }
 
     private VideoStreamWithResolution pickVideo(StreamInfo streamInfo) {
-        List<VideoStream> streams = streamInfo.getVideoStreams();
-        if (allowVideoOnly) {
-            streams = new ArrayList<>(streams);
-            streams.addAll(streamInfo.getVideoOnlyStreams());
-        }
+        List<VideoStream> streams = collectVideoStreams(streamInfo);
         if (BuildConfig.DEBUG) {
             for (VideoStream vs : streams) {
                 Logger.d(this, "found %s", VideoStreamWithResolution.toHumanReadable(vs));
             }
         }
         return pick(streams);
+    }
+
+    /**
+     * Collects all candidate video streams for the given {@link StreamInfo}.
+     */
+    private List<VideoStream> collectVideoStreams(StreamInfo streamInfo) {
+        if (!allowVideoOnly) {
+            return streamInfo.getVideoStreams();
+        }
+        List<VideoStream> streams = new ArrayList<>(streamInfo.getVideoStreams());
+        streams.addAll(streamInfo.getVideoOnlyStreams());
+        return streams;
+    }
+
+    /**
+     * Returns all valid video resolutions offered by the given {@link StreamInfo}.
+     * Filters out unsupported formats and returns a
+     * deduplicated, highest‑to‑lowest list of {@link VideoResolution}.
+     *
+     * @param streamInfo the full stream descriptor for the currently loaded video; must not be null
+     * @return a sorted list (highest first) of all valid {@link VideoResolution} values offered
+     *         by the video; never {@code null}, but may be empty if no playable streams exist
+     */
+    public List<VideoResolution> getAvailableResolutions(StreamInfo streamInfo) {
+        Set<VideoResolution> found = EnumSet.noneOf(VideoResolution.class);
+        for (VideoStream stream : collectVideoStreams(streamInfo)) {
+            if (isUsable(stream)) {
+                VideoResolution resolution = VideoResolution.resolutionToVideoResolution(stream.getResolution());
+                if (resolution != VideoResolution.RES_UNKNOWN) {
+                    found.add(resolution);
+                }
+            }
+        }
+        List<VideoResolution> resolutions = new ArrayList<>(found);
+        Collections.sort(resolutions, Collections.reverseOrder()); // highest first
+        return resolutions;
+    }
+
+    private boolean isUsable(VideoStream stream) {
+        return stream.isUrl() && isAllowedVideoFormat(stream.getFormat());
     }
 
     private VideoStreamWithResolution pick(Collection<VideoStream> streams) {

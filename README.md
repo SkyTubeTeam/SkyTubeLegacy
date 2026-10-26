@@ -57,7 +57,7 @@ Android 4.0 (Ice Cream Sandwich) or later. For techies, that means an API level 
 | Official YouTube player support* | ✅                   | ❌       |
 | Chromecast Support*              | ✅                   | ❌       |
 | Updates availability             | Immediate            | Normally up to 5 days |
-| Download APK                     | [![Download SkyTube Extra APK](screenshots/download_apk.png)](https://github.com/SkyTubeTeam/SkyTubeLegacy/releases/download/v2.999/SkyTube-Legacy-Extra-2.999.apk) | [![Download SkyTube (Vanilla) APK](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Get_it_on_F-Droid.svg/200px-Get_it_on_F-Droid.svg.png)](https://f-droid.org/packages/free.rm.skytube.legacy.oss/)
+| Download APK                     | [![Download SkyTube Extra APK](screenshots/download_apk.png)](https://github.com/SkyTubeTeam/SkyTubeLegacy/releases/download/v3.000/SkyTube-Legacy-Extra-3.000.apk) | [![Download SkyTube (Vanilla) APK](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Get_it_on_F-Droid.svg/200px-Get_it_on_F-Droid.svg.png)](https://f-droid.org/packages/free.rm.skytube.legacy.oss/)
 
 _* powered by a closed-source, third-party library._
 
@@ -109,6 +109,10 @@ You can help us translate this app into your native language by visiting [SkyTub
 This project was possible with the support and contribution of [numerous volunteers and third-party projects](http://skytube-app.com/credits.html).
 
 Help improve SkyTube by [translating](https://github.com/SkyTubeTeam/SkyTube/wiki/Contribute#translate) or [developing](https://github.com/SkyTubeTeam/SkyTube/wiki/Contribute#developers-guidelines) it.
+
+## Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=SkyTubeTeam/SkyTubeLegacy&type=Date)](https://star-history.dera.page/#SkyTubeTeam/SkyTubeLegacy&Date)
 
 ## License
 

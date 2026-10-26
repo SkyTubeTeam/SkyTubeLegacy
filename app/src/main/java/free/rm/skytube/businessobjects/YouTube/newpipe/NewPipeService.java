@@ -91,8 +91,9 @@ public class NewPipeService {
         }
 
         ListLinkHandler findListLinkHandler(String name) throws ParsingException {
-            // it's a bit overcomplicated
-            return extractor.getTabs().stream()
+            List<ListLinkHandler> tabs = extractor.getTabs();
+            Logger.d(instance, "Looking for tab '%s' among %d tabs: %s", name, tabs.size(), tabs);
+            return tabs.stream()
                 .filter(linkHandler -> {
                     List<String> filters = linkHandler.getContentFilters();
                     return filters != null && filters.contains(name);
@@ -277,7 +278,11 @@ public class NewPipeService {
         try {
             Logger.e(this, "fetching channel info: "+ channelId);
             ChannelWithExtractor channelExtractor = getChannelWithExtractor(channelId);
-            return new VideoPagerWithChannel(streamingService, channelExtractor.findVideosTab(), channelExtractor.channel);
+            ChannelTabExtractor tab = channelExtractor.findVideosTab();
+            if (tab == null) {
+                Logger.e(this, "findVideosTab returned null for channelId=%s", channelId);
+            }
+            return new VideoPagerWithChannel(streamingService, tab, channelExtractor.channel);
         } catch (ParsingException | RuntimeException e) {
             throw new NewPipeException("Getting videos for " + channelId + " fails:" + e.getMessage(), e);
         }
@@ -431,7 +436,7 @@ public class NewPipeService {
         try {
             video.setLikeDislikeCount(extractor.getLikeCount(), getDislikeCount(extractor, videoId));
         } catch (ParsingException pe) {
-            Logger.e(this, "Unable get like count for " + url.getUrl() + ", created at " + uploadDate + ", error:" + pe.getMessage(), pe);
+            Logger.i(this, "Unable get like count for " + url.getUrl() + ", created at " + uploadDate + ", error:" + pe.getMessage());
             video.setLikeDislikeCount(null, null);
         }
         return video;
