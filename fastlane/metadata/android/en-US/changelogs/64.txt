@@ -1,0 +1,7 @@
+* Multithreaded file downloads ported from NewPipe
+* Replace Gson with custom serialization; improve download error handling
+* Fix download notifications
+* Make the YouTubeChannel.tag list editable
+* Pre-fill URL input with youtu.be/ when the clipboard is empty
+* Fix subscriptions backup checkbox listener and subscribed video cleanup
+* Update NewPipeExtractor and do code cleanups
