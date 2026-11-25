@@ -1,3 +1,14 @@
+v3.004 - 2026-11-25
+ - Port the NewPipe file downloader so files are downloaded multithreaded
+ - Replace Gson with a custom serialization format for downloads
+ - Improve download error reporting and clean up the download engine
+ - Fix download notifications
+ - Make the YouTubeChannel.tag list editable
+ - Pre-fill the URL input with 'https://youtu.be/' when the clipboard is empty
+ - Fix the checkbox listener in the subscriptions backup manager
+ - Fix cleanup of subscribed videos
+ - Update NewPipeExtractor and do various code cleanups
+
 v3.000 - 2026-10-20
         * Add a Quality selector to switch video resolution during playback by ialNavy
         * Implement separate audio downloading.
